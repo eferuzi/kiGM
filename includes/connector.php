@@ -1,4 +1,6 @@
 <?php
+	#TODO: these needs to be moved to a config.php
+
 	$hostname = "localhost";
 	$username = "root";
 	$password = "rootpass";	
