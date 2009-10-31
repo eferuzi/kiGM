@@ -1,0 +1,16 @@
+<?php
+	function kigmintro() {
+?>
+	<h1><span class="blue">k</span><span class="red">i</span><span class="black">GM</span></h1>
+<?php 		
+	}
+	
+	function newAccount(){
+?>
+	 <fieldset>
+    	<legend>Help</legend>
+		<div class="center"><a href="#">Forgot Password</a> | <a href="#">Create Account</a></div>
+	</fieldset>
+<?php		
+	}
+?>

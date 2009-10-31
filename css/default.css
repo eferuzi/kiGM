@@ -1,0 +1,393 @@
+/*
+ Design by Tri Labs Ltd
+ http://www.trilabs.co.tz
+ Released for free under a GLP
+ */ * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #e2ecff;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #012e8c;
+}
+
+h1, h2, h3 {
+    color: #AA2808;
+}
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+label {
+    display: block;
+	margin:3px 0;
+	clear:right;
+}
+
+input[type = text], input[type = password]{
+    display: block;
+	width:90%;
+	float:right;
+	padding:2px;
+	clear:both;
+}
+
+select {
+    display: block;
+	width:91%;
+	float:right;
+	padding:2px;
+	clear:both;
+}
+
+input[type = submit]{
+    display: block;
+	width:50%;
+	float:right;
+	padding:2px;
+	margin:7px 0 4px 0;
+}
+
+fieldset{
+	padding:5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin-bottom:5px;
+}
+
+legend{
+	padding:0 3px;
+	display:block;
+}
+
+p, blockquote, ul, ol {
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+p {
+    text-align: justify;
+}
+
+blockquote {
+}
+
+ul {
+	text-align:left;
+}
+
+ul li{
+	text-align:left;
+}
+
+ol {
+}
+
+a {
+    text-decoration: underline;
+    color: #00f;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #FF0000;
+}
+
+th{
+	border-bottom: 1px solid #e2ecff;
+}
+
+table{
+	width:100%;
+	margin-bottom: 10px;
+	border:1px solid #e2ecff;
+}
+
+.clear{
+	clear:both;
+}
+
+.center{
+	text-align:center;
+}
+/* Wrapper */
+#wrapper {
+}
+
+/* Header */
+#header {
+    width: 960px;
+    height: 75px;
+    margin: 0 auto;
+    border-bottom: 2px solid #00f;
+}
+
+/* Logo */
+#logo {
+    float: left;
+    padding: 20px 0 0 15px;
+}
+
+#logo h1 {
+    margin: 0;
+    padding: 0;
+    font: normal 36px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#logo h2 {
+    margin: -5px 0 0 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #0000ff;
+}
+
+#logo a {
+    text-decoration: none;
+    color: #0000ff;
+}
+
+/* Menu */
+#menu {
+    float: right;
+    width: 420px;
+    height: 70px;
+    padding-right: 5px;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 37px 0 0 0;
+    list-style: none;
+    line-height: normal;
+    margin-left: 30px;
+}
+
+#menu li {
+    display: inline;
+    text-align: center;
+}
+
+#menu a {
+    display: block;
+    float: right;
+    height: 20px;
+    padding: 10px 20px 0 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #f00;
+    text-transform: lowercase;
+    text-decoration: none;
+}
+
+#menu a:hover, #menu .active a {
+    color: #AA2808;
+}
+
+#filter {
+    width: 710px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+#page {
+    width: 940px;
+    margin: 0 auto;
+    background: #e2efff;
+    padding: 10px 10px;
+}
+
+/* Content */
+#content {
+    float: left;
+    width: 650px;
+    padding: 5px;
+    background: #fff;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+#content h1, #content h2, #content h3 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #00f;
+}
+
+#content h1 {
+    font-size: 136%;
+}
+
+#content h2 {
+    font-size: 107%;
+}
+
+#content h3 {
+    font-size: 92%;
+}
+
+#content ul, #content ol {
+    list-style-position: inside;
+}
+
+#content .boxed {
+    float: left;
+    width: 46%;
+    padding-right: 2%;
+}
+
+#content .boxed h2 {
+    padding: 5px 0;
+    background: url(../images/img5.jpg) repeat-x left bottom;
+}
+
+/* workplace */
+#workplace {
+}
+
+/* Sample1 */
+#sample {
+}
+
+/* Sample2 */
+#sample2 {
+}
+
+/* Sidebar */
+#sidebar {
+    float: right;
+    width: 260px;
+    padding: 5px;
+    background: #fff;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+#sidebar ul {
+    margin: 1px;
+    list-style: none;
+    line-height: normal;
+}
+
+#sidebar li {
+    margin: 5px 0;
+    text-align: left;
+}
+
+#sidebar li ul {
+}
+
+#sidebar li li {
+    margin: 0;
+    border: none;
+}
+
+#sidebar h2 {
+    padding: 15px 0 5px 0;
+    border-bottom: 1px dotted #FFFFFF;
+    font-size: 100%;
+    color: #000;
+    text-align: center;
+}
+
+#sidebar h3 {
+    font-size: 77%;
+    color: #D4C792;
+}
+
+#sidebar p {
+    margin: 0;
+    line-height: normal;
+    color: #012e8c;
+}
+
+#sidebar a {
+    border: none;
+    text-decoration: none;
+    color: #00f;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+}
+
+/* Submenu */
+#submenu {
+}
+
+/* News */
+#news {
+}
+
+#news a {
+    font-size: 85%;
+}
+
+/* Footer */
+#footer {
+    width: 960px;
+    height: 50px;
+    margin: 0 auto;
+    color: #00f;
+    border-top: 2px solid #00f;
+}
+
+#footer p {
+    margin: 0;
+    text-align: center;
+    font-size: 1em;
+}
+
+#footer a {
+    text-decoration: underline;
+    color: #f00;
+}
+
+#footer a:hover {
+    text-decoration: none;
+}
+
+#results {
+    height: 400px;
+    background: #fff;
+    overflow: auto;
+    border: #8b8479 1px solid;
+}
+
+#results a {
+    color: #000;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+}
+
+input.textbox {
+    width: 300px;
+}
+
+.blue {
+    color: #0000ff;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.black {
+    color: #000000;
+}

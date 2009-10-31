@@ -1,0 +1,21 @@
+<?php 
+function loginform() {
+    
+?>
+<form method="post" action="login.php" id="loginform">
+    <fieldset>
+    	<legend>Login</legend>
+        <label id="lb_username" for="username">
+            Username
+        </label>
+        <input type="text" name="username" id="username" />
+		<label id="lb_secretword" for="secretword">
+            Password
+        </label>
+        <input type="password" name="secretword" id="secretword" />
+		<input type="submit" name="login" id="login" value="Login"/>		
+    </fieldset>
+</form>
+<?php 
+}
+?>
