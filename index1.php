@@ -113,7 +113,7 @@ Description: A two-column fixed-width template suitable for small websites.
 ?>	
 		<div id="content">
 			<div id="workplace">
-				<form method="POST" action="index1.php?action=save&id=<?php echo $id; ?>">
+				<form method="post" action="index1.php?action=save&id=<?php echo $id; ?>">
 					<table>
 						<tr>
 							<td align="right" valign="top">

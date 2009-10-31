@@ -79,7 +79,7 @@ function pageheader() {
             </li>
             <li>
                 <a href="#">kigm</a>
-            </li
+            </li>
             <li>
                 <a href="#">home</a>
             </li>
