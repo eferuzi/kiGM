@@ -2,8 +2,9 @@
 
 require_once ('dbcomponents.php');
 
+session_start();
+
 function loginform() {
-    
 ?>
 <form method="post" action="login.php" id="loginform">
     <fieldset>
@@ -25,6 +26,14 @@ function loginform() {
 
 
 function configform() {
+	//print the error message
+	if(isset($_SESSION['config_error'])){
+?>
+		<br />Error:<div class="error"><?php echo $_SESSION['config_error']['email']; ?> </div>
+<?php
+		unset($_SESSION['config_error']);
+		
+	}
 ?>
 <form method="post" action="actions/config.php" id="configform">
     <fieldset>
@@ -38,19 +47,16 @@ function configform() {
 		<label id="lb_langname" for="langname">
             Language Name
         </label>
-        <?php languagesCombo(); ?>		
-		
-		
-		
+        <?php languagesCombo(); ?>				
 		<input type="submit" name="configure" id="configure" value="Configure"/>
     </fieldset>
 </form>
-<?php 
+<?php
 }
 
 function createaccountform() {
 ?>
-<form method="post" action="actions/config.php" id="configform">
+<form method="post" action="actions/createaccount.php" id="configform">
     <fieldset>
         <legend>
             Account Details

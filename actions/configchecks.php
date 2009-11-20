@@ -2,11 +2,13 @@
 require_once ('includes/connector.php');
 
 function isConfigSet() {
+	global $connection;
+	
     $query = "SELECT COUNT(*) AS configs FROM config";
     
-    $result = mysql_query($query) or die(mysql_error());
+    $result = $connection->query($query);
 	    
-	$row= mysql_fetch_object($result);
+	$row= $result->fetch_object();;
 	
 		
     if ($row->configs == 1) {

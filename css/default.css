@@ -120,6 +120,17 @@ table{
 .center{
 	text-align:center;
 }
+
+.error{
+   color:#FF0000;
+   padding-left:2em;
+   padding-bottom:2em;
+}
+
+.sucess{
+   color:#00FF00;
+}
+
 /* Wrapper */
 #wrapper {
 }

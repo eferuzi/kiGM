@@ -1,4 +1,8 @@
 <?php 
+
+require_once ('includes/connector.php');
+
+
 function pageinit($pagename = '') {
     
 ?>
@@ -139,4 +143,6 @@ function divclear() {
 </div>
 <?php 
 }
+
+
 ?>

@@ -2,18 +2,20 @@
 require_once ('includes/connector.php');
 
 function languagesCombo() {
+	
+	global $connection;
+	
     $query = "SELECT * FROM languages ORDER BY name;";
     
-    $result = mysql_query($query) or die(mysql_error());
+    $result = $connection->query($query);
     
 ?>
 	<select name="langcode" id="langcode">
 <?php 
-    while ($row = mysql_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
 ?>    	
        <option value="<?php echo $row->code; ?>"><?php echo $row->name; ?></option> 
-<?php
-		
+<?php	
     }
 }
 ?>

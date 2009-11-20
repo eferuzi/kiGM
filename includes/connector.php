@@ -5,6 +5,9 @@
 	$username = "root";
 	$password = "rootpass";	
 	$databasename = "kigm-dev";
-	$connection = mysql_connect($hostname, $username, $password) or die(mysql_error());
-	mysql_select_db($databasename, $connection) or die(mysql_error());
+	$connection = new  mysqli($hostname, $username, $password, $databasename);
+	
+	if($connection->connect_error){
+		echo "Connection Error (".$connection->errno.")". $connection->error;
+	}
 ?>
