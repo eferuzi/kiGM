@@ -1,10 +1,76 @@
 <?php
-/**
-* checks if email has been used
-*/
-function isEmailUsed($email){
+  require_once ('connector.php');
+  /**
+   * trimming and cleaning the GET and POST 
+   */
+  function makeinputsafe(){
+    
+    global $connection;
+    
+    foreach ($_POST as $key => $value) { 
+      $_POST[$key] = $connection->real_escape_string(trim($value)); 
+    }
+    
+    foreach ($_GET as $key => $value) { 
+      $_GET[$key] = $connection->real_escape_string(trim($value)); 
+    }
+    
+    foreach ($_REQUEST as $key => $value) { 
+      $_REQUEST[$key] = $connection->real_escape_string(trim($value)); 
+    } 
+  }
   
-}
-
-
+  
+  function usernameused($username){
+    
+    global $connection;
+    
+    if($stmt = $connection->prepare("SELECT COUNT(*) FROM login WHERE username=?")){
+       
+       $stmt->bind_param('s', $username);
+       
+       $stmt->execute();
+       
+       $stmt->bind_result($usernamecount);
+       $stmt->fetch();
+       
+       $stmt->close();
+       
+       if($usernamecount==1){        
+         return TRUE;
+       }else{
+         return FALSE;
+       }
+    }
+    
+  }
+  
+  /**
+  * checks if email has been used
+  */
+  
+  function isemailused($email){
+    
+    global $connection;
+    
+    $email = $connection->real_escape_string($email);
+    
+    if($stmt = $connection->prepare("SELECT COUNT(*) FROM login WHERE email=?")){
+        
+        $stmt->bind_param('s', $email);
+        
+        $stmt->execute();
+        
+        $stmt->bind_result($emailcount);
+        $stmt->fetch();
+        
+        $stmt->close();
+        
+        if($emailcount==1){        
+          return TRUE;
+        }else{
+          return FALSE;
+        }
+    }
+  }
 ?>

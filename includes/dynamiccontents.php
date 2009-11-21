@@ -1,55 +1,59 @@
 <?php
     require_once ('includes/connector.php');
-	
-    $configs = getcongifs();
-    
+	require_once ('includes/init.php');
+
 	function getTotalTerms(){
-		global $configs;
 		
-		$query = "SELECT COUNT(*) AS all_entries FROM gm_".$configs['langcode'];		
-		$result = $result = mysql_query($query) or die(mysql_error());
-		$row = mysql_fetch_object($result) or die(mysql_error());	
+		global $configs, $connection;		
+		
+		$result = $connection->query("SELECT COUNT(*) AS all_entries FROM gm_".$configs['langcode']) or die($connection->error);
+		
+		$row = $result->fetch_object() or die($connection->error);	
+		
+		mysqli_free_result($result);
 		
 		return $row->all_entries;
 	}
-	
-	
-	function getUntranslatedTerms(){
-		global $configs;
 		
-		$query = "SELECT COUNT(*) AS untranslated_entries FROM gm_".$configs['langcode']." WHERE status='0' OR word IS NULL;";
-		$result = $result = mysql_query($query) or die(mysql_error());
-		$row = mysql_fetch_object($result) or die(mysql_error());
+	function getUntranslatedTerms(){
+		
+		global $configs, $connection;		
+		
+		$result = $connection->query("SELECT COUNT(*) AS untranslated_entries FROM gm_{$configs['langcode']} WHERE status='0' OR word IS NULL") or die($connection->error);
+		
+		$row = $result->fetch_object() or die($connection->error);	
 	
 		return $row->untranslated_entries;	
 	}
 	
 	
 	function getFuzzyTerms(){
-		global $configs;
+		global $configs, $connection;	
 		
-		$query = "SELECT COUNT(*) AS fuzzy_entries FROM gm_".$configs['langcode']." WHERE status='1' AND word IS NOT NULL;";
-		$result = $result = mysql_query($query) or die(mysql_error());
-		$row = mysql_fetch_object($result) or die(mysql_error());
+		$result =$connection->query("SELECT COUNT(*) AS fuzzy_entries FROM gm_".$configs['langcode']." WHERE status='1' AND word IS NOT NULL;") or die($connection->error);
+		
+		$row = $result->fetch_object() or die($connection->error);
 	
 		return $row->fuzzy_entries;	
 	}
 	
 	
 	function getCompletedTerms(){
-		global $configs;
+		global $configs, $connection;	
 		
-		$query = "SELECT COUNT(*) AS complete_entries FROM gm_".$configs['langcode']." WHERE status='2' AND word IS NULL;";
-		$result = $result = mysql_query($query) or die(mysql_error());
-		$row = mysql_fetch_object($result) or die(mysql_error());
+		$result = $connection->query("SELECT COUNT(*) AS complete_entries FROM gm_".$configs['langcode']." WHERE status='2' AND word IS NULL;") or die($connection->error);
+		
+		$row =  $result->fetch_object() or die($connection->error);
 		 
 		return $row->complete_entries;
 	}
 	
 	function getTranslatorsCount(){
-		$query = "SELECT COUNT(*) translators FROM login;";
-		$result = $result = mysql_query($query) or die(mysql_error());
-		$row = mysql_fetch_object($result) or die(mysql_error());
+		global $configs, $connection;	
+
+		$result = $connection->query("SELECT COUNT(*) translators FROM login;") or die($connection->error);
+		
+		$row = $result->fetch_object() or die($connection->error);
 		 
 		return $row->translators;
 	}

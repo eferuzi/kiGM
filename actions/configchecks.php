@@ -1,8 +1,12 @@
 <?php 
 require_once ('includes/connector.php');
 
+
 function isConfigSet() {
+	
 	global $connection;
+
+	echo $connection->host_info;
 	
     $query = "SELECT COUNT(*) AS configs FROM config";
     

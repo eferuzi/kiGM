@@ -61,7 +61,7 @@ function insteringDefaultsInfo($langcode){
 $langcode = trim($_POST['langcode']);
 $groupemail = $connection->real_escape_string(trim($_POST['groupemail']));
 
-if(validEmail($groupemail)){
+if(checkemail($groupemail)){
     $success = insterConfigInfo($langcode, $groupemail);
     $success = createTranslationTables($langcode);
     $success = insteringDefaultsInfo($langcode);

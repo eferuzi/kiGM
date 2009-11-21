@@ -61,29 +61,29 @@ function createaccountform() {
         <legend>
             Account Details
         </legend>
-		<label id="lb_groupemail" for="groupemail">
+		<label id="lb_fullname" for="fullname">
             Full name
         </label>
-		<input type="text" name="groupemail" id="groupemail" />
-		<label id="lb_groupemail" for="groupemail">
+		<input type="text" name="fullname" id="fullname" />
+		<label id="lb_email" for="email">
             Email Address
         </label>
-		<input type="text" name="groupemail" id="groupemail" />
+		<input type="text" name="email" id="email" />
 		<br /><br />
-		<label id="lb_langname" for="langname">
+		<label id="lb_username" for="username">
             Username
         </label>
-		<input type="text" name="groupemail" id="groupemail" />
+		<input type="text" name="username" id="username" />
 		
-		<label id="lb_langname" for="langname">
+		<label id="lb_password" for="password">
             Password
         </label>
-		<input type="text" name="groupemail" id="groupemail" />
+		<input type="password" name="password" id="password" />
 		
 		<label id="lb_langname" for="langname">
             Confirm Password
         </label>
-		<input type="text" name="groupemail" id="groupemail" />
+		<input type="password" name="repassword" id="repassword" />
 		<input type="submit" name="create" id="create" value="Create"/>
     </fieldset>
 </form>
