@@ -1,6 +1,8 @@
 <?php
     require_once ('includes/connector.php');
 	require_once ('includes/init.php');
+	
+	session_start();
 
 	function getTotalTerms(){
 		
@@ -80,5 +82,14 @@
 		</tr>
 	</table>
 <?php 		
+	}
+	
+	function operationinformation(){
+?>
+		<div class="information"> 
+			<?php echo $_SESSION['info']; ?>
+		</div>
+	
+<?php	
 	}
 ?>

@@ -127,8 +127,10 @@ table{
    padding-bottom:2em;
 }
 
-.sucess{
+.success, .information{
    color:#00FF00;
+   text-align:center;
+   padding:3px 0;
 }
 
 /* Wrapper */

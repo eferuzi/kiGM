@@ -4,25 +4,23 @@
 /**
  * validating input based on conditions passed as an array
  */
-function validateinput($inputname, $valuename, $condiotions){
-  if(isset($_POST[$inputname])){
-    
+function validateinput($inputname, $valuename, $conditions){
+  if(isset($_POST[$inputname])){    
     $value = $_POST[$inputname];
-    
-    $condiotionschecks=array();  
+    $conditionschecks=array();  
     $index=0;
-    foreach($condiotions as $condiotion){
+    foreach($conditions as $condition){
       if($skipnext){
         $index++;
         $skipnext=false;
       }else{
-        //echo $condiotion;
-        switch($condiotion){
+        //echo $condition;
+        switch($condition){
           case "required":          
-            if(checkrequired($value, $condiotions[$index+1])){
-              $condiotionschecks[$condiotion] = true;
+            if(checkrequired($value, $conditions[$index+1])){
+              $conditionschecks[$condition] = true;
             }else{
-              $condiotionschecks[$condiotion] = array (false, " required to have a min. length of {$condiotions[$index+1]} chararcters");
+              $conditionschecks[$condition] = array (false, " required to have a min. length of {$conditions[$index+1]} chararcters");
             }
             
             $index++;
@@ -30,42 +28,42 @@ function validateinput($inputname, $valuename, $condiotions){
             break;
           case "email":
             if(checkemail($value)){
-              $condiotionschecks[$condiotion] = true;
+              $conditionschecks[$condition] = true;
             }else{
-              $condiotionschecks[$condiotion] = array (false, " invalid");
+              $conditionschecks[$condition] = array (false, " invalid");
             }
             $index++;
             break;
           case "emailused":
             if(isemailused($value)){
-              $condiotionschecks[$condiotion] = array (false, " used");
+              $conditionschecks[$condition] = array (false, " used");
             }else{
-              $condiotionschecks[$condiotion] = true;
+              $conditionschecks[$condition] = true;
             }
             $index++;
             break;
           case "username":
             if(checkusername($value)){
-              $condiotionschecks[$condiotion] = true;
+              $conditionschecks[$condition] = true;
             }else{
-              $condiotionschecks[$condiotion] = array (false, " used");
+              $conditionschecks[$condition] = array (false, " used");
   
             }
             $index++;
             break;
           case "password":
             if(checkpassword($value)){
-              $condiotionschecks[$condiotion] = true;
+              $conditionschecks[$condition] = true;
             }else{
-              $condiotionschecks[$condiotion] = array (false, " required to have a min. length of 8 chararcters");
+              $conditionschecks[$condition] = array (false, " required to have a min. length of 8 chararcters");
             }
             $index++;
             break;
           case "match|repassword":
             if(checkmatch($value, substr($condition, strpos($condition, "|")+1))){
-              $condiotionschecks[$condiotion] = true;
+              $conditionschecks[$condition] = true;
             }else{
-              $condiotionschecks[$condiotion] = array (false, " does not match");
+              $conditionschecks[$condition] = array (false, " does not match");
             }
             $index++;
             break;
@@ -76,7 +74,7 @@ function validateinput($inputname, $valuename, $condiotions){
     //construct a message
     $isvalid=true;
     $errormessage = $valuename . " fails on (";
-    foreach($condiotionschecks as $check){
+    foreach($conditionschecks as $check){
       if(is_array($check)) {
         $errormessage .= $check[1] ." ,";
         $isvalid=false;

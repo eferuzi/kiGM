@@ -55,6 +55,19 @@ function configform() {
 }
 
 function createaccountform() {
+	if(isset($_SESSION['result'])){
+		
+		echo "<br />Error:<div class='error'><ul>";
+		foreach($_SESSION['result'] as $key => $value){
+			if($value[0]){
+				${$key}=$value[1];
+			}else{
+				${$key}="";
+				echo "<li>{$value[1]}</li>";
+			}
+		}
+		echo "<ul></div>";
+	}
 ?>
 <form method="post" action="actions/createaccount.php" id="configform">
     <fieldset>
@@ -64,30 +77,31 @@ function createaccountform() {
 		<label id="lb_fullname" for="fullname">
             Full name
         </label>
-		<input type="text" name="fullname" id="fullname" />
+		<input type="text" name="fullname" id="fullname" value="<?php echo $fullname; ?>" />
 		<label id="lb_email" for="email">
             Email Address
         </label>
-		<input type="text" name="email" id="email" />
+		<input type="text" name="email" id="email" value="<?php echo $email; ?>"/>
 		<br /><br />
 		<label id="lb_username" for="username">
             Username
         </label>
-		<input type="text" name="username" id="username" />
+		<input type="text" name="username" id="username" value="<?php echo $username; ?>" />
 		
 		<label id="lb_password" for="password">
             Password
         </label>
-		<input type="password" name="password" id="password" />
+		<input type="password" name="password" id="password" value="<?php echo $password; ?>" />
 		
 		<label id="lb_langname" for="langname">
             Confirm Password
         </label>
-		<input type="password" name="repassword" id="repassword" />
+		<input type="password" name="repassword" id="repassword" value="<?php echo $password; ?>" />
 		<input type="submit" name="create" id="create" value="Create"/>
     </fieldset>
 </form>
-<?php 
+<?php
+	unset($_SESSION['result']);
 }
 
 ?>

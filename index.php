@@ -18,6 +18,12 @@ if ($isConfig) {
 kigmintro();
 endcontent();
 startsidebar();
+
+if(isset($_SESSION['info'])){
+    operationinformation();
+    unset($_SESSION['info']);
+}
+
 if ($isConfig) {
     loginform();
     newAccount();
