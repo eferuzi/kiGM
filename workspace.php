@@ -1,18 +1,24 @@
 <?php 
 require_once ('includes/includes.php');
 
-pageinit('home');
+if(!isset($_SESSION['userid'])){
+  $_SESSION['results']['message'] ="Please login to access Workspace";
+  header("Location: index.php");
+}
 
-startbody();
-pageheader();
-startpagecontent();
-startcontent();
-endcontent();
-startsidebar();
-endsidebar();
-divclear();
-endpagecontent();
-pagefooter();
-endbody();
+pageinit('workspace');
+  startbody();
+    pageheader();
+    startpagecontent();
+      startcontent();
+        createaccountform();
+      endcontent();
+      startsidebar();
+        createAccountInfo();
+      endsidebar();
+      divclear();
+    endpagecontent();
+    pagefooter();
+  endbody();
 pageend();
 ?>

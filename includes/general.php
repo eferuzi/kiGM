@@ -54,7 +54,7 @@ Description: Translation tool for the Terminology Project
     ?>
     <div id="footer">
         <p id="legal">
-            Copyright &copy; <?php echo $year; ?> <a href="http://www.trilabs.co.tz">Tri Labs</a>. All Rights Reserved. <a href="terms.php">Terms of Use</a>
+            <span class="blue">k</span><span class="red">i</span><span class="black">GM</span> 0.1b &copy; <?php echo $year; ?> <a href="http://www.trilabs.co.tz">Tri Labs</a>. All Rights Reserved. <a href="terms.php">Terms of Use</a>
         </p>
     </div>
     <?php 

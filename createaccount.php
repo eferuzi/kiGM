@@ -1,5 +1,6 @@
 <?php 
 require_once ('includes/includes.php');
+
 pageinit('home');
   startbody();
     pageheader();

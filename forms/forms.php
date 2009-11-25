@@ -5,8 +5,15 @@ require_once ('dbcomponents.php');
 session_start();
 
 function loginform() {
+	//print the error message
+	if(isset($_SESSION['results'])){
 ?>
-<form method="post" action="login.php" id="loginform">
+		<br />Error:<div class="error"><?php echo $_SESSION['results']['message']; ?> </div>
+<?php
+		unset($_SESSION['results']);		
+	}
+?>
+<form method="post" action="actions/login.php" id="loginform">
     <fieldset>
         <legend>
             Login

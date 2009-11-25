@@ -73,4 +73,56 @@
         }
     }
   }
+  
+/**
+  * checks if username and password are valid
+  */
+ 
+function validuser($username, $password){
+  
+  global $connection;
+        
+  if($stmt = $connection->prepare("SELECT COUNT(*) FROM login WHERE username=? AND secretword=?")){
+      
+      $stmt->bind_param('ss', $username, md5($password));
+      
+      $stmt->execute();
+      
+      $stmt->bind_result($usercount);
+      
+      $stmt->fetch();
+      
+      $stmt->close();
+      
+      if($usercount==1){        
+        return TRUE;
+      }else{
+        return FALSE;
+      }
+  }
+}
+  
+  function getuserid($username){
+  
+  global $connection;
+        
+  if($stmt = $connection->prepare("SELECT id FROM login WHERE username=?")){
+      
+      $stmt->bind_param('s', $username);
+      
+      $stmt->execute();
+      
+      $stmt->bind_result($userid);
+      
+      $stmt->fetch();      
+      
+      $stmt->close();
+      
+      if($userid>0){        
+        return $userid;
+      }else{
+        return 0;
+      }
+  }
+}
 ?>
