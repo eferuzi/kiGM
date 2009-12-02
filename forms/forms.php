@@ -111,4 +111,63 @@ function createaccountform() {
 	unset($_SESSION['result']);
 }
 
+function changepassword() {
+	if(isset($_SESSION['results'])){
+		
+		echo "<br />Error:<div class='error'><ul>";
+		foreach($_SESSION['results'] as $key => $value){
+			if($value[0]){
+				${$key}=$value[1];
+			}else{
+				${$key}="";
+				echo "<li>{$value[1]}</li>";
+			}
+		}
+		echo "<ul></div>";
+	}
+	
+?>
+<form method="post" action="actions/changepassword.php" id="changepassword">
+    <fieldset>
+        <legend>
+            Change Password
+        </legend>
+        <label id="lb_password" for="curpassword">
+            Current Password
+        </label>
+        <input type="password" name="curpassword" id="curpassword" value="<?php echo $curpassword; ?>" />
+		<label id="lb_password" for="password">
+            Password
+        </label>
+		<input type="password" name="password" id="password" value="<?php echo $password; ?>" />
+		
+		<label id="lb_langname" for="langname">
+            Confirm Password
+        </label>
+		<input type="password" name="repassword" id="repassword" value="<?php echo $password; ?>" />
+		<input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['userid']; ?>" />
+		<input type="submit" name="changepassword" id="changepassword" value="Change Password"/>
+    </fieldset>
+</form>
+<?php
+	unset($_SESSION['results']);
+}
+
+function termsearchform(){
+?>
+<form action="?action=search" method="post">
+	<table>
+		<tr>
+			<td >
+				<input name="searchkey" id="searchkey" type="text"/>
+			</td>
+			<td align="center">
+				<input type="submit" value="Filter" />
+			</td>
+		</tr>
+	</table>
+</form>
+<?php 
+}	
+
 ?>

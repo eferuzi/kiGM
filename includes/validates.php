@@ -67,6 +67,14 @@ function validateinput($inputname, $valuename, $conditions){
             }
             $index++;
             break;
+           case "validpassword":
+            if(validpassword($_POST['userid'], $value)){
+              $conditionschecks[$condition] = true;
+            }else{
+              $conditionschecks[$condition] = array (false, " current password is invalid.");
+            }
+            $index++;
+            break;
         }
       }
     }

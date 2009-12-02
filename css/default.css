@@ -404,3 +404,15 @@ input.textbox {
 .black {
     color: #000000;
 }
+
+.terms{
+	height: 30em;
+	background: #fff;
+	overflow: auto;
+	padding-top:5px;
+}
+
+.terms a{
+	color: #0f0;
+	padding-left:10px;
+}
