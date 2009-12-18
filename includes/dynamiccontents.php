@@ -102,28 +102,56 @@ function accountInfo(){
 
 function filter($key=NULL) {
 	global $connection;	
-
-	if($stmt = $connection->prepare("SELECT en_id, en_word FROM gm_en ORDER BY en_word")){			
+	if($key){
+		$query="SELECT en_id, en_word FROM gm_en WHERE en_word LIKE ? ORDER BY en_word";
+	}else{
+		$query="SELECT en_id, en_word FROM gm_en ORDER BY en_word";
+	}
 	
+	if($stmt = $connection->prepare($query)){			
+	
+		if($key){
+			$key="%".$key."%";
+			$stmt->bind_param('s',$key);
+		}		
 		$stmt->execute();
+		$resultcount=0;
+		
+		echo "COUNT " . $resultcount;
 		
 		$stmt->bind_result($en_id, $en_word);
 ?>
-	<fieldset><legend>Terms</legend>
-		<div>
+	<fieldset><legend>Terms</legend>		
+		<div class="termsearch">
 			<form action="?action=search" method="post">
 			<input style="float: left;width: 96%;" name="searchkey" id="searchkey" type="text"/>
-			<input type="submit" value="Search" />
+			<!--<input type="submit" value="Search" /> -->
 			</form>
 		</div>
 		<div class="clear"></div>
-    	<ul class="terms">
-<?php		
-		while ($row = $stmt->fetch()) {
+<?php
+		if($key){
 ?>
-			<li><a href="?action=translate&id=<?php echo $en_id; ?>"><?php echo $en_word ?></a></li>
+			<br /><a href="?clear=yes" title="List All" style="float:right;">List All</a><br />
+<?php
+		}		
+?>
+		<br />
+    	<ul class="terms">
+<?php
+		
+		while ($row = $stmt->fetch()) {
+			$resultcount++;
+?>
+			<li><a href="?action=translate&id=<?php echo $en_id; ?>" title="Translate: <?php echo $en_word; ?>"><?php echo $en_word ?></a></li>
 <?php	    
-	    }
+		}
+			
+		if($resultcount==0){		 
+?>
+			  <li><a href="?clear=yes" title="List All">No match found</a></li>
+<?php	    
+		}
 ?>
     	</ul>
     </fieldset>
@@ -136,4 +164,38 @@ function filter($key=NULL) {
 	}
 }
 
+function wordinfo($wordid){
+	$info = getenglishwordinfo($wordid);
+	if($info==NULL ||$info==false){
+		echo "Invalid Word ID";
+	}else{
+?>		
+	<fieldset><legend>Word Info</legend>
+		<div class="wordinfo">
+			<div>
+				<strong class="word"><?php echo $info['word']; ?></strong>&nbsp;&nbsp;<em><?php echo $info['sycgroup']; ?></em>
+				<p class="definition"><?php echo $info['definition']; ?></p>
+			</div>
+<?php
+		if(strlen(trim($info['comment']))>0){ 
+?>		
+			<div>
+				<table style="border: none;" cellpadding="5" cellspacing="5">
+					<tr>
+						<td valign="top" style="width: 5em;"><strong>Comment:</strong></td>
+						<td align="left" valign="top" ><?php echo trim($info['comment']); ?></td>
+					</tr>
+				</table>
+			</div>
+<?php 
+		}
+?>		
+		</div>
+<?php		
+		workspace();
+?>		
+    </fieldset>
+<?php 
+	}
+}
 ?>

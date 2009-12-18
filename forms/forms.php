@@ -168,6 +168,31 @@ function termsearchform(){
 	</table>
 </form>
 <?php 
-}	
+}
+
+function workspace($id=NULL){
+?>	
+	<form action="?action=search" method="post">
+	<table>
+		<tr>
+			<th width="65%">
+				Workspace
+			</th>
+			<th width="30%">
+				Suggestions
+			</th>
+		</tr>
+		<tr>
+			<th width="65%">
+				Workspace
+			</th>
+			<th width="30%">
+				Suggestions
+			</th>
+		</tr>
+	</table>
+</form>
+<?php	
+}
 
 ?>

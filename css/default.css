@@ -406,7 +406,7 @@ input.textbox {
 }
 
 .terms{
-	height: 30em;
+	height: 25em;
 	background: #fff;
 	overflow: auto;
 	padding-top:5px;
@@ -415,4 +415,21 @@ input.textbox {
 .terms a{
 	color: #0f0;
 	padding-left:10px;
+}
+
+.termsearch{
+	mar
+}
+
+.wordinfo{
+	color:#000;
+}
+
+.definition{
+	padding:0 5px 0 20px;
+}
+
+.word{
+	font-size:1.3em;
+    color: #012e8c;
 }

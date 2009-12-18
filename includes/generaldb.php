@@ -151,7 +151,7 @@ function getUserFullname($userid){
 
 function validpassword($userid, $password){
 	global $connection;
-	$password = md5($password);	
+	$password = md5($password);
 
 	if($stmt = $connection->prepare("SELECT COUNT(*) FROM login WHERE id=? AND secretword=?")){
 
@@ -166,6 +166,61 @@ function validpassword($userid, $password){
 		$stmt->close();
 
 		if($usercount==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}
+
+function getenglishwordinfo($wordid){
+	global $connection;
+	if(validwordid($wordid)){
+		$query="SELECT
+				e.en_id AS id, e.en_word AS word,e.en_def AS definition,e.en_comment AS comment, s.shortname AS sycgroup
+			FROM 
+				gm_en AS e, sycgroup_en AS s,syc_word_en AS se 
+			WHERE 
+				e.en_id=se.word_id AND se.syc_id=s.id AND e.en_id=?";
+		if($stmt = $connection->prepare($query)){
+
+			$stmt->bind_param('i', $wordid);
+
+			$stmt->execute();
+
+			$stmt->bind_result($id, $word,$definition,$comment,$sycgroup);
+
+			$stmt->fetch();
+
+			$stmt->close();
+
+			if($wordid==$id){
+				return array('id'=>$id,'word'=>trim($word),'definition'=>trim($definition),'comment'=>trim($comment),'sycgroup'=>trim($sycgroup));
+			}else{
+				return false;
+			}
+		}
+	}else{
+		return NULL;
+	}
+}
+
+function validwordid($id){
+	global $connection;
+
+	if($stmt = $connection->prepare("SELECT COUNT(*) FROM gm_en WHERE en_id=?")){
+
+		$stmt->bind_param('i', $id);
+
+		$stmt->execute();
+
+		$stmt->bind_result($count);
+
+		$stmt->fetch();
+
+		$stmt->close();
+
+		if($count==1){
 			return true;
 		}else{
 			return false;
